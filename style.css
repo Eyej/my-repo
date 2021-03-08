@@ -1,4 +1,73 @@
-h1 {
-  color: indigo;
+body {
+  font-family: sans-serif;
+}
+h1,
+h2,
+h5,
+h6,
+p {
+  color: #878787;
+}
+
+h2 {
+  font-weight: 600;
+}
+.temp {
+  display: flex;
+  font-size: larger;
+  margin: 12px 0;
+}
+.tempmain span a {
+  text-decoration: none;
+}
+.container {
+  padding: 50px;
+}
+.appBody {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 24px 18px;
+  border: 1px solid indianred;
+  border-radius: 5px;
+}
+.one {
+  position: relative;
+  /* top: 10px; */
+  left: 0;
+  width: 18%;
+  font-weight: bold;
+}
+.two {
+  width: 80%;
+}
+.display {
+  padding: 20px 10px 5px 10px;
+}
+.col-sm-8 {
+  padding-right: 0;
+}
+
+.tempdetail {
+  position: relative;
+  left: 60px;
+  text-align: left;
+  /* font-size: 1em; */
+}
+.weeklytemp {
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.daytemp {
+  list-style-type: none;
   text-align: center;
+}
+.smallpic {
+  display: block;
+  margin: 0 auto;
+  max-height: 39px;
+}
+.edited {
+  margin-top: 3px;
 }

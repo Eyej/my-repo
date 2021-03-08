@@ -1,11 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document with GIT</title>
+    <title>Weather App</title>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/6937a2b004.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
-    <h1>Hello Git</h1>
+    <div class="container">
+        <div class="appBody">
+            <!-- App is split into two ends, one for buttons and the second to show search results -->
+            <section class="one">
+                <!-- Vertical button group for three set cities -->
+
+                <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked />
+                    <label class="btn btn-outline-secondary" for="btnradio1">London</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" />
+                    <label class="btn btn-outline-secondary" for="btnradio2">Sydney</label>
+
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" />
+                    <label class="btn btn-outline-secondary" for="btnradio3">Atlanta</label>
+                </div>
+            </section>
+            <section class="two">
+                <form class="row g-3" id="search-form">
+                    <div class="col-sm-8">
+                        <input type="search" class="form-control" autocomplete="off" placeholder="Enter any city"
+                            aria-describedby="emailHelp" id="search-input" />
+                    </div>
+                    <div class="col-sm-2">
+                        <!-- Using a FA icon as the search button -->
+                        <button type="submit" class="btn btn-primary" id="searchButton">
+                            <i class="fas fa-search-location fa-lg"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-2"><button type="button" class="btn btn-outline-secondary"
+                            id="currentLoc">Current</button></div>
+                </form>
+
+                <!-- Weather display screen -->
+                <div class="display">
+                    <h2 id="city">London, UK</h2>
+                    <h6 id="currentDate">Thursday, 14:00</h6>
+                    <h6 id="weatherComments">Partly Cloudy</h6>
+
+                    <div class="temp">
+                        <div class="tempmain">
+                            <img src="images/cloudySunny.JPG" alt="Partly Cloudy" />
+                            <span><span class="num" id="tempNum">6</span><sup>
+                                    <a href="#" id="celsius">℃</a> &nbsp;|&nbsp;
+                                    <a href="#" id="fahrenheit">℉</a>
+                                </sup></span>
+                        </div>
+                        <!-- Section containing weather e.g wind and humidity details -->
+                        <div class="tempdetail">
+                            <h6 id="how-humid">Humidity: 70%</h6>
+                            <h6 id="wind">Wind: 47mph</h6>
+                        </div>
+                    </div>
+                    <!-- <canvas id="canvas"></canvas> -->
+                    <hr style="color: rgb(255, 204, 0);" />
+                    <!-- Weather display for next week incl current day -->
+                    <ul class="weeklytemp">
+                        <li class="daytemp">
+                            <h6>Thu</h6>
+                            <img src="images/cloudySunny.JPG" alt="Partly Cloudy" class="smallpic" />
+                            <p>6℃ &nbsp; 4℃</p>
+                        </li>
+                        <li class="daytemp">
+                            <h6>Fri</h6>
+                            <img src="images/Rainy.JPG" alt="Intermittent Rainfall" class="smallpic" />
+                            <p>3℃ &nbsp; -1℃</p>
+                        </li>
+                        <li class="daytemp">
+                            <h6>Sat</h6>
+                            <img src="images/heavyRain.JPG" alt="Heavy Rainfall" class="smallpic" />
+                            <p>1℃ &nbsp; 0℃</p>
+                        </li>
+                        <li class="daytemp">
+                            <h6>Sun</h6>
+                            <img src="images/Rainy.JPG" alt="Light Rain Showers" class="smallpic" />
+                            <p>0℃ &nbsp; -2℃</p>
+                        </li>
+                        <li class="daytemp">
+                            <h6>Mon</h6>
+                            <img src="images/cloudy.JPG" alt="Mostly Cloudy" class="smallpic" />
+                            <p class="edited">4℃ &nbsp; -3℃</p>
+                        </li>
+                        <li class="daytemp">
+                            <h6>Tue</h6>
+                            <img src="images/sunny.JPG" alt="Sunny" class="smallpic" />
+                            <p>9℃ &nbsp; 4℃</p>
+                        </li>
+                        <li class="daytemp">
+                            <h6>Wed</h6>
+                            <img src="images/cloudySunny.JPG" alt="Partly Cloudy" class="smallpic" />
+                            <p>2℃ &nbsp; -1℃</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
