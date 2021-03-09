@@ -71,3 +71,7 @@ h2 {
 .edited {
   margin-top: 3px;
 }
+footer {
+  font-family: monospace;
+  font-size: 16px;
+}

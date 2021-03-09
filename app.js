@@ -28,12 +28,14 @@ function weatherHandler(event) {
   axios
     .get(`${endpoint}q=${searchQuery.value}&units=${unit}&appid=${apiKey}`)
     .then(showWeather);
-  // if (searchQuery.value) {
-  //   city.textContent = searchQuery.value;
-  // } else {
-  //   alert("Type in a city");
-  // }
 }
+function titleCase(word){
+    return word.toLowerCase().split(' ').map(function(letter) {
+        return (letter.charAt(0).toUpperCase() + letter.slice(1));
+    }).join(' ');
+}
+console.log(titleCase('aspen'));
+//   Display weather per search query
 function showWeather(response) {
   console.log(response.data);
   let cityName = response.data.name;
@@ -42,6 +44,7 @@ function showWeather(response) {
   let humidity = response.data.main.humidity;
   let windSpeed = Math.floor(response.data.wind.speed);
   let description = response.data.weather[0].description;
+  description = titleCase(description);
   city.innerHTML = `${cityName}, ${countryAbbrev}`;
   weatherReport.innerHTML = description;
   temp.innerHTML = temperature;
@@ -58,11 +61,11 @@ let wind = document.querySelector("#wind");
 let formOne = document.querySelector("#search-form");
 formOne.addEventListener("submit", weatherHandler);
 
-//  Bonus Homework
+// Event call for current location
 function displayCurrentWeather() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-// Call to get lat & long
+// Call to get current location coordinates
 function showPosition(position) {
   let lat = Math.round(position.coords.latitude);
   let long = Math.round(position.coords.longitude);
@@ -71,16 +74,71 @@ function showPosition(position) {
   let unit = "metric";
   axios
     .get(`${apiURL}lat=${lat}&lon=${long}&units=${unit}&appid=${apiKey}`)
-    .then(showCW);
+    .then(showWeather);
 }
-function showCW(response) {
-  let cityName = response.data.name;
-  let countryAbbrev = response.data.sys.country;
-  let temperature = Math.round(response.data.main.temp);
-  alert(`The temperature in ${cityName}, ${countryAbbrev} is ${temperature}℃.`);
-}
+
 let button = document.querySelector("#currentLoc");
 button.addEventListener("click", displayCurrentWeather);
+
+// Writing calls for when location buttons are called(London, Sydney, Moscow)
+function displayCityWeather(event) {
+  event.preventDefault();
+  let choice;
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiKey = "386b70f96b3e09e40aefe57eb2e44f5e";
+  let unit = "metric";
+
+    if (london) {
+        choice = "London";
+    } 
+    else if (sydney) {
+        choice = "Sydney";
+    }
+    else if (moscow) {
+        choice = "Moscow";
+    }
+//   switch (choice) {
+//       case london:
+//         choice = "London";  
+//           break
+//     case sydney:
+//         choice = "Sydney";
+//         break;
+//     case moscow:
+//         choice = "Moscow";
+//         break;
+//     default:
+//         choice = "London";
+//         break;
+// }
+//   Passing all variables into axios
+  axios
+    .get(`${apiUrl}q=${choice}&units=${unit}&appid=${apiKey}`)
+    .then(showWeather);
+
+}
+
+let london = document.querySelector("#btnradio1");
+let sydney = document.querySelector("#btnradio2");
+let moscow = document.querySelector(".moscow");
+// next, adding eventlisteners
+london.addEventListener("click", displayCityWeather);
+sydney.addEventListener("click", displayCityWeather);
+moscow.addEventListener("click", displayCityWeather);
+
+
+
+
+
+
+
+// Depreciated, was for past work, now replaced with showWeather
+// function showCW(response) {
+//   let cityName = response.data.name;
+//   let countryAbbrev = response.data.sys.country;
+//   let temperature = Math.round(response.data.main.temp);
+//   alert(`The temperature in ${cityName}, ${countryAbbrev} is ${temperature}℃.`);
+// }
 
 // // Old Challenge 3
 // let temp = document.querySelector(".num");
