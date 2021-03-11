@@ -59,6 +59,9 @@ ul.day-desc {
   list-style-type: none;
   padding: 0;
 }
+.tempmain {
+  display: flex;
+}
 div span.num {
   font-size: 2em;
 }
