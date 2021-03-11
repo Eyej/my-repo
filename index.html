@@ -14,11 +14,13 @@
 </head>
 
 <body>
-    <div class="container">
-        <header class="heading">Weather App</header>
+    <div class="test">
+         <h1 class="heading">Weather App</h1>
         <p class="brief">hgfdsedfghjk</p>
-        <div class="page">
-<div class="appBody">
+    </div>
+    <div class="container">
+ 
+        <div class="appBody">
             <!-- App is split into two ends, one for buttons and the second to show search results -->
             <section class="one">
                 <!-- Vertical button group for three set cities -->
@@ -48,10 +50,11 @@
                     </div>
                     <div class="col-sm">
                         <!-- Adding a FA map icon -->
-                        <button type="button" class="btn btn-outline-secondary"
+                        <i class="fas fa-map-marker-alt fa-2x"  id="currentLoc"></i>
+                        <!-- <button type="button" class="btn btn-outline-secondary"
                             id="currentLoc"> 
                             <i class="fas fa-map-marker-alt"></i>
-                        </button>
+                        </button> -->
                         </div>
                 </form>
 
@@ -65,16 +68,22 @@
                     <div class="row g-3 temp">
                         <div class="col-6 tempmain">
                             <img src="media/cloudySunny.JPG" alt="Partly Cloudy" />
-                            <span><span class="num" id="tempNum">6</span><sup>
+                            <span><span class="num" id="tempNum">6</span>
+                                <sup>
                                     <a href="#" id="celsius">℃</a> &nbsp;|&nbsp;
                                     <a href="#" id="fahrenheit">℉</a>
-                                </sup></span>
+                                </sup>
+                            </span>
                         </div>
                         <!-- Section containing weather e.g wind and humidity details -->
-                        <div class="col-6 tempdetail">
-                            <h6 id="how-humid">Humidity: 70%</h6>
-                            <h6 id="wind">Wind: 47mph</h6>
-                        </div>
+                        <div class="col-6">
+                            <ul class="tempdetail">
+                                <li>Feels like </li>
+                                <li></li>
+                                <li id="how-humid">Humidity: 70%</li>
+                                <li id="wind">Wind: 47mph</li>
+                            </ul>
+                           </div>
                     </div>
                     <!-- <canvas id="canvas"></canvas> -->
                     <hr style="color: rgb(255, 204, 0);" />
@@ -121,8 +130,6 @@
             
         </div>
         <footer><a href="https://github.com/Eyej/weather-app" target="_blank" class="footer-link">Open-source code</a> by Ijeoma Onyenokporo (@Eyej)</footer>
-        </div>
-        
         
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

@@ -1,7 +1,17 @@
 body {
   font-family: sans-serif;
+  /* background: radial-gradient(
+    circle at 0% 0.5%,
+    rgb(241, 241, 242) 0.1%,
+    rgb(224, 226, 228) 100.2%
+  ); */
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(253, 239, 132) 0%,
+    rgb(247, 198, 169) 54.2%,
+    rgb(21, 186, 196) 100.3%
+  );
 }
-h1,
 h2,
 h5,
 h6,
@@ -12,15 +22,27 @@ p {
 h2 {
   font-weight: 600;
 }
+.test {
+  text-align: center;
+  padding: 30px;
 
+  height: 30%;
+}
 .container {
-  padding: 50px;
+  padding: 0 50px 50px 50px;
+}
+/* .about-site {
+  background-image: url("https://images.unsplash.com/photo-1581205135021-fbad89f942a6?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8c3Vubnl8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=600");
+} */
+.heading {
+  text-align: center;
+  font-weight: bolder;
 }
 .appBody {
   display: flex;
   justify-content: space-evenly;
   padding: 24px 18px;
-  border: 1px solid indianred;
+  border: 1px solid rgb(253, 239, 132);
   border-radius: 5px;
 }
 .one {
@@ -37,20 +59,16 @@ ul.day-desc {
   list-style-type: none;
   padding: 0;
 }
-/* .temp {
-  display: flex;
-  font-size: larger;
-  margin: 12px 0;
-} */
+div span.num {
+  font-size: 2em;
+}
 .tempmain span a {
   text-decoration: none;
 }
-/* .tempdetail {
-  position: relative;
-  left: 60px;
-  text-align: left;
-  font-size: 1em;
-} */
+ul.tempdetail {
+  list-style-type: none;
+  padding: 0;
+}
 .display {
   padding: 20px 10px 5px 10px;
 }
