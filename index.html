@@ -15,7 +15,10 @@
 
 <body>
     <div class="container">
-        <div class="appBody">
+        <header class="heading">Weather App</header>
+        <p class="brief">hgfdsedfghjk</p>
+        <div class="page">
+<div class="appBody">
             <!-- App is split into two ends, one for buttons and the second to show search results -->
             <section class="one">
                 <!-- Vertical button group for three set cities -->
@@ -33,28 +36,34 @@
             </section>
             <section class="two">
                 <form class="row g-3" id="search-form">
-                    <div class="col-sm-8">
+                    <div class="col-sm-9">
                         <input type="search" class="form-control" autocomplete="off" placeholder="Enter any city"
                             aria-describedby="emailHelp" id="search-input" />
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm">
                         <!-- Using a FA icon as the search button -->
                         <button type="submit" class="btn btn-primary" id="searchButton">
                             <i class="fas fa-search-location fa-lg"></i>
                         </button>
                     </div>
-                    <div class="col-sm-2"><button type="button" class="btn btn-outline-secondary"
-                            id="currentLoc">Current</button></div>
+                    <div class="col-sm">
+                        <!-- Adding a FA map icon -->
+                        <button type="button" class="btn btn-outline-secondary"
+                            id="currentLoc"> 
+                            <i class="fas fa-map-marker-alt"></i>
+                        </button>
+                        </div>
                 </form>
 
                 <!-- Weather display screen -->
                 <div class="display">
                     <h2 id="city">London, UK</h2>
-                    <h6 id="currentDate">Thursday, 14:00</h6>
-                    <h6 id="weatherComments">Partly Cloudy</h6>
-
-                    <div class="temp">
-                        <div class="tempmain">
+                    <ul class="day-desc">
+                        <li id="currentDate">Thursday, 14:00</li>
+                        <li id="weatherComments">Partly Cloudy</li>
+                    </ul>
+                    <div class="row g-3 temp">
+                        <div class="col-6 tempmain">
                             <img src="media/cloudySunny.JPG" alt="Partly Cloudy" />
                             <span><span class="num" id="tempNum">6</span><sup>
                                     <a href="#" id="celsius">℃</a> &nbsp;|&nbsp;
@@ -62,7 +71,7 @@
                                 </sup></span>
                         </div>
                         <!-- Section containing weather e.g wind and humidity details -->
-                        <div class="tempdetail">
+                        <div class="col-6 tempdetail">
                             <h6 id="how-humid">Humidity: 70%</h6>
                             <h6 id="wind">Wind: 47mph</h6>
                         </div>
@@ -112,6 +121,9 @@
             
         </div>
         <footer><a href="https://github.com/Eyej/weather-app" target="_blank" class="footer-link">Open-source code</a> by Ijeoma Onyenokporo (@Eyej)</footer>
+        </div>
+        
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
