@@ -42,7 +42,7 @@ function titleCase(word){
         return (letter.charAt(0).toUpperCase() + letter.slice(1));
     }).join(' ');
 }
-console.log(titleCase('aspen'));
+
 //   Display weather per search query
 function showWeather(response) {
   console.log(response.data);
@@ -54,14 +54,14 @@ function showWeather(response) {
   let description = response.data.weather[0].description;
   let tempFeeling = Math.round(response.data.main.feels_like);
   let icon = response.data.weather[0].icon;
-  // console.log(icon);
+
   description = titleCase(description);
   city.innerHTML = `${cityName}, ${countryAbbrev}`;
   weatherReport.innerHTML = description;
   temp.innerHTML = temperature;
   humid.innerHTML = `Humidity: ${humidity}%`;
   wind.innerHTML = `Wind: ${windSpeed}mph`;
-  feeling.innerHTML = `Feels like: ${tempFeeling}℃`;
+  feeling.innerHTML = `Feels like: ${tempFeeling}°`;
   let heading = document.querySelector("#currentDate");
   // console.log(response.data.dt);
   heading.innerHTML = formatDate(response.data.dt * 1000);
