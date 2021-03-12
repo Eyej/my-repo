@@ -15,6 +15,12 @@ let days = [
 ];
 let today = days[dayIndex];
 console.log(today);
+if (hour < 10) {
+  hour = `0${hour}`;
+}
+if (mins < 10) {
+  mins = `0${hour}`;
+}
 let heading = document.querySelector("#currentDate");
 heading.innerHTML = `${today} ${hour}:${mins}`;
 
