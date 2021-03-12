@@ -62,10 +62,15 @@ ul.day-desc {
 .tempmain {
   display: flex;
 }
-div span.num {
+.num {
   font-size: 2em;
+  margin-left: 20px;
 }
-.tempmain span a {
+.units {
+  position: relative;
+  top: -15px;
+}
+.units a {
   text-decoration: none;
 }
 ul.tempdetail {

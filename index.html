@@ -53,7 +53,6 @@
                         <i class="fas fa-map-marker-alt fa-2x"  id="currentLoc"></i>
                         <!-- <button type="button" class="btn btn-outline-secondary"
                             id="currentLoc"> 
-                            <i class="fas fa-map-marker-alt"></i>
                         </button> -->
                         </div>
                 </form>
@@ -66,18 +65,16 @@
                         <li id="weatherComments">Partly Cloudy</li>
                     </ul>
                     <div class="row g-3 temp">
-                        <div class="col-6 tempmain">
-                            <div class="clearfix">
+                        <div class="col-6">
+                            <div class="clearfix tempmain">
                                 <img src="media/cloudySunny.JPG" alt="Partly Cloudy" class=float-left/>
-                                <div class="float-right">
-                                    <span class="num" id="tempNum">6</span>
+                                <div class="float-left">
+                                    <strong class="num" id="tempNum">6</strong
+                                        ><span class="units">
+                                            <a href="#" id="celsius" class="active">℃</a> &nbsp;|&nbsp;
+                                            <a href="#" id="fahrenheit">℉</a></span>
                                 </div>
-                                <div class="units">
-                                    <a href="#" id="celsius">℃</a> &nbsp;|&nbsp;
-                                    <a href="#" id="fahrenheit">℉</a>
-                                </div>
-                            </div><!-- <span>
-                            </span> -->
+                            </div>
                         </div>
                         <!-- Section containing weather e.g wind and humidity details -->
                         <div class="col-6">
