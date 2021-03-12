@@ -50,12 +50,14 @@ function showWeather(response) {
   let humidity = response.data.main.humidity;
   let windSpeed = Math.floor(response.data.wind.speed);
   let description = response.data.weather[0].description;
+  let tempFeeling = Math.round(response.data.main.feels_like);
   description = titleCase(description);
   city.innerHTML = `${cityName}, ${countryAbbrev}`;
   weatherReport.innerHTML = description;
   temp.innerHTML = temperature;
   humid.innerHTML = `Humidity: ${humidity}%`;
   wind.innerHTML = `Wind: ${windSpeed}mph`;
+  feeling.innerHTML = `Feels like: ${tempFeeling}℃`;
 }
 // Accessing Ids from DOM
 let city = document.querySelector("#city");
@@ -64,6 +66,7 @@ let weatherReport = document.querySelector("#weatherComments");
 let temp = document.querySelector("#tempNum");
 let humid = document.querySelector("#how-humid");
 let wind = document.querySelector("#wind");
+let feeling = document.querySelector("#temp-feeling");
 let formOne = document.querySelector("#search-form");
 formOne.addEventListener("submit", weatherHandler);
 
@@ -93,8 +96,9 @@ function displayCityWeather(event) {
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
   let apiKey = "386b70f96b3e09e40aefe57eb2e44f5e";
   let unit = "metric";
+  //  Fiddling, trying to make each default button work
+  // let choice = cButton.innerHTML;
   let c = ["London", "Sydney", "Moscow"];
-  // Fiddling, trying to make each default button work
   if (london) {
       choice = c[0];
   } 
@@ -104,35 +108,24 @@ function displayCityWeather(event) {
   else {
       choice = c[3];
   }
-//   switch (choice) {
-//       case london:
-//         choice = "London";  
-//           break
-//     case sydney:
-//         choice = "Sydney";
-//         break;
-//     case moscow:
-//         choice = "Moscow";
-//         break;
-//     default:
-//         choice = "London";
-//         break;
-// }
 //   Passing all variables into axios
   axios
     .get(`${apiUrl}q=${choice}&units=${unit}&appid=${apiKey}`)
     .then(showWeather);
 
 }
-let london = document.querySelector("#btn1");
-let sydney = document.querySelector("#btn2");
-// let london = document.querySelector("#btnradio1");
-// let sydney = document.querySelector("#btnradio2");
+// let cButton = document.querySelector(".cityButton");
+// cButton.addEventListener("click", displayCityWeather);
+// let london = document.querySelector("#btn1");
+// let sydney = document.querySelector("#btn2");
+let london = document.querySelector("#btnradio1");
+let sydney = document.querySelector("#btnradio2");
 let moscow = document.querySelector("#btnradio3");
 // moscow.addEventListener("click", displayCityWeather);
 // next, adding eventlisteners
-london.addEventListener("click", displayCityWeather);
-sydney.addEventListener("click", displayCityWeather);
+
+// london.addEventListener("click", displayCityWeather);
+// sydney.addEventListener("click", displayCityWeather);
 
 
 
