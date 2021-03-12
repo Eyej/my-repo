@@ -53,6 +53,8 @@ function showWeather(response) {
   let windSpeed = Math.floor(response.data.wind.speed);
   let description = response.data.weather[0].description;
   let tempFeeling = Math.round(response.data.main.feels_like);
+  let icon = response.data.weather[0].icon;
+  // console.log(icon);
   description = titleCase(description);
   city.innerHTML = `${cityName}, ${countryAbbrev}`;
   weatherReport.innerHTML = description;
@@ -61,10 +63,11 @@ function showWeather(response) {
   wind.innerHTML = `Wind: ${windSpeed}mph`;
   feeling.innerHTML = `Feels like: ${tempFeeling}℃`;
   let heading = document.querySelector("#currentDate");
-  console.log(response.data.dt);
+  // console.log(response.data.dt);
   heading.innerHTML = formatDate(response.data.dt * 1000);
+  weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
 }
-// Accessing Ids from DOM
+// Accessing elements by ids in DOM
 let city = document.querySelector("#city");
 let searchQuery = document.querySelector("#search-input");
 let weatherReport = document.querySelector("#weatherComments");
@@ -72,6 +75,7 @@ let temp = document.querySelector("#tempNum");
 let humid = document.querySelector("#how-humid");
 let wind = document.querySelector("#wind");
 let feeling = document.querySelector("#temp-feeling");
+let weatherIcon = document.querySelector("#weather-icon");
 let formOne = document.querySelector("#search-form");
 formOne.addEventListener("submit", weatherHandler);
 
@@ -121,16 +125,16 @@ function displayCityWeather(event) {
 }
 // let cButton = document.querySelector(".cityButton");
 // cButton.addEventListener("click", displayCityWeather);
-// let london = document.querySelector("#btn1");
-// let sydney = document.querySelector("#btn2");
-let london = document.querySelector("#btnradio1");
-let sydney = document.querySelector("#btnradio2");
-let moscow = document.querySelector("#btnradio3");
+let london = document.querySelector("#btn1");
+let sydney = document.querySelector("#btn2");
+// let london = document.querySelector("#btnradio1");
+// let sydney = document.querySelector("#btnradio2");
+// let moscow = document.querySelector("#btnradio3");
 // moscow.addEventListener("click", displayCityWeather);
-// next, adding eventlisteners
 
-// london.addEventListener("click", displayCityWeather);
-// sydney.addEventListener("click", displayCityWeather);
+// next, adding eventlisteners
+london.addEventListener("click", displayCityWeather);
+sydney.addEventListener("click", displayCityWeather);
 
 
 
