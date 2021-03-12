@@ -1,28 +1,30 @@
-// Challenge 1 - Keeping time, date current
-let now = new Date();
-let year = now.getFullYear();
-let mins = now.getMinutes();
-let hour = now.getHours();
-let dayIndex = now.getDay();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-let today = days[dayIndex];
-console.log(today);
-if (hour < 10) {
-  hour = `0${hour}`;
+// Date from weather api
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let year = now.getFullYear();
+  let mins = now.getMinutes();
+  let hour = now.getHours();
+  let dayIndex = now.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  let today = days[dayIndex];
+  console.log(today);
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  if (mins < 10) {
+    mins = `0${hour}`;
+  }
+return `${today} ${hour}:${mins}`;
 }
-if (mins < 10) {
-  mins = `0${hour}`;
-}
-let heading = document.querySelector("#currentDate");
-heading.innerHTML = `${today} ${hour}:${mins}`;
+
 
 // Challenge 2
 function weatherHandler(event) {
@@ -58,6 +60,9 @@ function showWeather(response) {
   humid.innerHTML = `Humidity: ${humidity}%`;
   wind.innerHTML = `Wind: ${windSpeed}mph`;
   feeling.innerHTML = `Feels like: ${tempFeeling}℃`;
+  let heading = document.querySelector("#currentDate");
+  console.log(response.data.dt);
+  heading.innerHTML = formatDate(response.data.dt * 1000);
 }
 // Accessing Ids from DOM
 let city = document.querySelector("#city");
@@ -132,30 +137,3 @@ let moscow = document.querySelector("#btnradio3");
 
 
 
-
-// Depreciated, was for past work, now replaced with showWeather
-// function showCW(response) {
-//   let cityName = response.data.name;
-//   let countryAbbrev = response.data.sys.country;
-//   let temperature = Math.round(response.data.main.temp);
-//   alert(`The temperature in ${cityName}, ${countryAbbrev} is ${temperature}℃.`);
-// }
-
-// // Old Challenge 3
-// let temp = document.querySelector(".num");
-// let fakeTemp = 6;
-// function displayFahrTemperature() {
-//   let newTemp = Math.round((fakeTemp * 9) / 5 + 32);
-//   temp.innerHTML = newTemp;
-//   return newTemp;
-// }
-// function displayCelsTemperature() {
-//   let oldTemp = displayFahrTemperature();
-//   let result = Math.floor(((oldTemp - 32) * 5) / 9);
-//   console.log(oldTemp);
-//   temp.innerHTML = result;
-// }
-// let celsTemp = document.querySelector("#celsius");
-// let fahrenTemp = document.querySelector("#fahrenheit");
-// celsTemp.addEventListener("click", displayCelsTemperature);
-// fahrenTemp.addEventListener("click", displayFahrTemperature);
