@@ -24,17 +24,23 @@
             <!-- App is split into two ends, one for buttons and the second to show search results -->
             <section class="one">
                 <!-- Vertical button group for three set cities -->
-
-                <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
+                    <!-- <div class="btn-group-vertical"> -->
+                    <div>
+                        <button type="button" class="btn btn-outline-secondary" id="btn1">London
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" id="btn2">Sydney
+                        </button>
+                    </div>
+                <!-- <div class="btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" />
                     <label class="btn btn-outline-secondary" for="btnradio1" checked>London</label>
 
-                    <input type="radio" class="btn-check sydney" name="btnradio" id="btnradio2" />
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" />
                     <label class="btn btn-outline-secondary" for="btnradio2">Sydney</label>
 
-                    <input type="radio" class="btn-check moscow" name="btnradio" id="btnradio3" />
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" />
                     <label class="btn btn-outline-secondary" for="btnradio3">Moscow</label>
-                </div>
+                </div> -->
             </section>
             <section class="two">
                 <form class="row g-3" id="search-form">
@@ -49,11 +55,8 @@
                         </button>
                     </div>
                     <div class="col-sm">
-                        <!-- Adding a FA map icon -->
+                        <!-- Replacing current loc button with a FA map icon -->
                         <i class="fas fa-map-marker-alt fa-2x"  id="currentLoc"></i>
-                        <!-- <button type="button" class="btn btn-outline-secondary"
-                            id="currentLoc"> 
-                        </button> -->
                         </div>
                 </form>
 
