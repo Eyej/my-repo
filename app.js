@@ -63,9 +63,9 @@ function showWeather(response) {
   wind.innerHTML = `Wind: ${windSpeed}mph`;
   feeling.innerHTML = `Feels like: ${tempFeeling}°`;
   let heading = document.querySelector("#currentDate");
-  // console.log(response.data.dt);
   heading.innerHTML = formatDate(response.data.dt * 1000);
   weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+  weatherIcon.setAttribute("alt", description);
 }
 // Accessing elements by ids in DOM
 let city = document.querySelector("#city");
