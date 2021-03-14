@@ -20,7 +20,7 @@ function formatDate(timestamp) {
     hour = `0${hour}`;
   }
   if (mins < 10) {
-    mins = `0${hour}`;
+    mins = `0${mins}`;
   }
 return `${today} ${hour}:${mins}`;
 }
@@ -117,9 +117,7 @@ function displayCityWeather(event) {
 let london = document.querySelector("#btn1");
 let sydney = document.querySelector("#btn2");
 let moscow = document.querySelector("#btn3");
-// let london = document.querySelector("#btnradio1");
-// let sydney = document.querySelector("#btnradio2");
-// let moscow = document.querySelector("#btnradio3");
+
 // next, adding eventlisteners
 london.addEventListener("click", displayCityWeather);
 sydney.addEventListener("click", displayCityWeather);
