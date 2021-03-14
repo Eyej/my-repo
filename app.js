@@ -101,40 +101,29 @@ button.addEventListener("click", displayCurrentWeather);
 // Writing calls for when location buttons are called(London, Sydney, Moscow)
 function displayCityWeather(event) {
   event.preventDefault();
-  
+  console.log(event);
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
   let apiKey = "386b70f96b3e09e40aefe57eb2e44f5e";
   let unit = "metric";
-  //  Fiddling, trying to make each default button work
-  // let choice = cButton.innerHTML;
-  let c = ["London", "Sydney", "Moscow"];
-  if (london) {
-      choice = c[0];
-  } 
-  else if (sydney) {
-      choice = c[1];
-  }
-  else {
-      choice = c[3];
-  }
+ 
+  let choice = event.target.innerText;
 //   Passing all variables into axios
   axios
     .get(`${apiUrl}q=${choice}&units=${unit}&appid=${apiKey}`)
     .then(showWeather);
 
 }
-// let cButton = document.querySelector(".cityButton");
-// cButton.addEventListener("click", displayCityWeather);
+
 let london = document.querySelector("#btn1");
 let sydney = document.querySelector("#btn2");
+let moscow = document.querySelector("#btn3");
 // let london = document.querySelector("#btnradio1");
 // let sydney = document.querySelector("#btnradio2");
 // let moscow = document.querySelector("#btnradio3");
-// moscow.addEventListener("click", displayCityWeather);
-
 // next, adding eventlisteners
 london.addEventListener("click", displayCityWeather);
 sydney.addEventListener("click", displayCityWeather);
+moscow.addEventListener("click", displayCityWeather);
 
 
 
