@@ -48,7 +48,7 @@ function showWeather(response) {
   console.log(response.data);
   let cityName = response.data.name;
   let countryAbbrev = response.data.sys.country;
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemp = Math.round(response.data.main.temp);
   let humidity = response.data.main.humidity;
   let windSpeed = Math.floor(response.data.wind.speed);
   let description = response.data.weather[0].description;
@@ -58,7 +58,7 @@ function showWeather(response) {
   description = titleCase(description);
   city.innerHTML = `${cityName}, ${countryAbbrev}`;
   weatherReport.innerHTML = description;
-  temp.innerHTML = temperature;
+  temp.innerHTML = celsiusTemp;
   humid.innerHTML = `Humidity: ${humidity}%`;
   wind.innerHTML = `Wind: ${windSpeed}mph`;
   feeling.innerHTML = `Feels like: ${tempFeeling}°`;
@@ -67,6 +67,8 @@ function showWeather(response) {
   weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
   weatherIcon.setAttribute("alt", description);
 }
+// making celsiusTemp a global var
+let celsiusTemp = null;
 // Accessing elements by ids in DOM
 let city = document.querySelector("#city");
 let searchQuery = document.querySelector("#search-input");
@@ -123,6 +125,20 @@ london.addEventListener("click", displayCityWeather);
 sydney.addEventListener("click", displayCityWeather);
 moscow.addEventListener("click", displayCityWeather);
 
+// Creating the temp converter
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  temp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+}
+function convertToCelsius(event) {
+  event.preventDefault();
+  temp.innerHTML = celsiusTemp;
+  // Math.floor(((oldTemp - 32) * 5) / 9);
+}
+let fahrenheitLink= document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+let celsiusLink= document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertToCelsius);
 
 
 
