@@ -128,12 +128,17 @@ moscow.addEventListener("click", displayCityWeather);
 // Creating the temp converter
 function convertToFahrenheit(event) {
   event.preventDefault();
+  // remove active class from Celsius link and add to F-link when temp switches to fahrenheit
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   temp.innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
 }
 function convertToCelsius(event) {
   event.preventDefault();
+  // Added back the active class
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
   temp.innerHTML = celsiusTemp;
-  // Math.floor(((oldTemp - 32) * 5) / 9);
 }
 let fahrenheitLink= document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);

@@ -60,6 +60,10 @@ ul.day-desc {
 .tempmain {
   display: flex;
 }
+.tempmain .active {
+  color: black;
+  cursor: default;
+}
 .num {
   font-size: 2em;
   margin-left: 20px;
