@@ -15,7 +15,6 @@ function formatDate(timestamp) {
     "Saturday"
   ];
   let today = days[dayIndex];
-  console.log(today);
   if (hour < 10) {
     hour = `0${hour}`;
   }
@@ -24,16 +23,38 @@ function formatDate(timestamp) {
   }
 return `${today} ${hour}:${mins}`;
 }
-// forecast call
-function forecast(response) {
+// 5 day forecast call
+function displayForecast(response) {
   console.log(response.data);
+  // Response variables
+  let forecast = response.data.list;
+  let dayOne = formatDate(forecast[2].dt * 1000);
+  let shorthand1 = dayOne.slice(0, 3);
+  let icon1 = forecast[2].weather[0].icon;
+  let tempMax = Math.round(forecast[2].main.temp);
+  let tempMin = Math.round(forecast[2].main.temp_min);
+  console.log(dayOne);
 
+  let forecastElement = document.querySelector("#forecastNode");
+  forecastElement.innerHTML = 
+  `<div class="col-2 daytemp">
+      <h6 class="">${shorthand1}</h6>
+      <img src="media/cloudySunny.JPG" alt=${forecast[2].weather[0].description} id="fIcon1" class="smallpic" />
+      <div class ="secondary-temp">
+          <strong id="temp-max">
+            ${tempMax}°
+          </strong> &nbsp;
+          <span id="temp-min">${tempMin}°</span> 
+      </div>
+    </div>`;
+  
+ fIcon1.setAttribute("src", `http://openweathermap.org/img/wn/${icon1}.png`);
 }
 
 // API call to get desired weather and forecast
 function weatherHandler(event) {
   event.preventDefault();
-  //  Start for HomeWork 5
+  // declaring api variables
   let endpoint = "https://api.openweathermap.org/data/2.5/weather?";
   let apiKey = "386b70f96b3e09e40aefe57eb2e44f5e";
   let unit = "metric";
@@ -43,7 +64,7 @@ function weatherHandler(event) {
 
     // forecast call
     let apiUrl = "https://api.openweathermap.org/data/2.5/forecast?";
-    axios.get(`${apiUrl}q=${searchQuery.value}&units=${unit}&appid=${apiKey}`).then(forecast);
+    axios.get(`${apiUrl}q=${searchQuery.value}&units=${unit}&appid=${apiKey}`).then(displayForecast);
 }
 function titleCase(word){
     return word.toLowerCase().split(' ').map(function(letter) {
@@ -53,7 +74,7 @@ function titleCase(word){
 
 //   Display weather per search query
 function showWeather(response) {
-  console.log(response.data);
+  // console.log(response.data);
   let cityName = response.data.name;
   let countryAbbrev = response.data.sys.country;
   celsiusTemp = Math.round(response.data.main.temp);
