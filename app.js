@@ -12,7 +12,7 @@ function formatDate(timestamp) {
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
   ];
   let today = days[dayIndex];
   if (hour < 10) {
@@ -21,24 +21,40 @@ function formatDate(timestamp) {
   if (mins < 10) {
     mins = `0${mins}`;
   }
-return `${today} ${hour}:${mins}`;
+  return `${today} ${hour}:${mins}`;
 }
+// same as above, but specifically for hours
+function formatHour(timestamp) {
+  let now = new Date(timestamp);
+  let mins = now.getMinutes();
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  if (mins < 10) {
+    mins = `0${mins}`;
+  }
+  return `${hour}:${mins}`;
+}
+
 // 5 day forecast call
 function displayForecast(response) {
   console.log(response.data);
+
   // Response variables
   let forecast = response.data.list;
   let dayOne = formatDate(forecast[2].dt * 1000);
-  let shorthand1 = dayOne.slice(0, 3);
+  let dayAbbrev1 = dayOne.slice(0, 3);
+  let timeOfDay = formatHour(forecast[2].dt * 1000);
   let icon1 = forecast[2].weather[0].icon;
   let tempMax = Math.round(forecast[2].main.temp);
   let tempMin = Math.round(forecast[2].main.temp_min);
   console.log(dayOne);
 
   let forecastElement = document.querySelector("#forecastNode");
-  forecastElement.innerHTML = 
-  `<div class="col-2 daytemp">
-      <h6 class="">${shorthand1}</h6>
+  forecastElement.innerHTML = `<div class="col-2 daytemp">
+      <small>${timeOfDay}</small>
+      <h6>${dayAbbrev1}</h6>
       <img src="media/cloudySunny.JPG" alt=${forecast[2].weather[0].description} id="fIcon1" class="smallpic" />
       <div class ="secondary-temp">
           <strong id="temp-max">
@@ -47,8 +63,8 @@ function displayForecast(response) {
           <span id="temp-min">${tempMin}°</span> 
       </div>
     </div>`;
-  
- fIcon1.setAttribute("src", `http://openweathermap.org/img/wn/${icon1}.png`);
+
+  fIcon1.setAttribute("src", `http://openweathermap.org/img/wn/${icon1}.png`);
 }
 
 // API call to get desired weather and forecast
@@ -62,14 +78,20 @@ function weatherHandler(event) {
     .get(`${endpoint}q=${searchQuery.value}&units=${unit}&appid=${apiKey}`)
     .then(showWeather);
 
-    // forecast call
-    let apiUrl = "https://api.openweathermap.org/data/2.5/forecast?";
-    axios.get(`${apiUrl}q=${searchQuery.value}&units=${unit}&appid=${apiKey}`).then(displayForecast);
+  // forecast call
+  let apiUrl = "https://api.openweathermap.org/data/2.5/forecast?";
+  axios
+    .get(`${apiUrl}q=${searchQuery.value}&units=${unit}&appid=${apiKey}`)
+    .then(displayForecast);
 }
-function titleCase(word){
-    return word.toLowerCase().split(' ').map(function(letter) {
-        return (letter.charAt(0).toUpperCase() + letter.slice(1));
-    }).join(' ');
+function titleCase(word) {
+  return word
+    .toLowerCase()
+    .split(" ")
+    .map(function (letter) {
+      return letter.charAt(0).toUpperCase() + letter.slice(1);
+    })
+    .join(" ");
 }
 
 //   Display weather per search query
@@ -93,7 +115,10 @@ function showWeather(response) {
   feeling.innerHTML = `Feels like: ${tempFeeling}°`;
   let heading = document.querySelector("#currentDate");
   heading.innerHTML = formatDate(response.data.dt * 1000);
-  weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+  weatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
   weatherIcon.setAttribute("alt", description);
 }
 // making celsiusTemp a global var
@@ -136,13 +161,12 @@ function displayCityWeather(event) {
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
   let apiKey = "386b70f96b3e09e40aefe57eb2e44f5e";
   let unit = "metric";
- 
+
   let choice = event.target.innerText;
-//   Passing all variables into axios
+  //   Passing all variables into axios
   axios
     .get(`${apiUrl}q=${choice}&units=${unit}&appid=${apiKey}`)
     .then(showWeather);
-
 }
 
 let london = document.querySelector("#btn1");
@@ -169,12 +193,7 @@ function convertToCelsius(event) {
   celsiusLink.classList.add("active");
   temp.innerHTML = celsiusTemp;
 }
-let fahrenheitLink= document.querySelector("#fahrenheit-link");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
-let celsiusLink= document.querySelector("#celsius-link");
+let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
-
-
-
-
-
