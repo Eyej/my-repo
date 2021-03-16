@@ -86,21 +86,25 @@ ul.tempdetail {
   padding-right: 0;
 }
 
-.weeklytemp {
+/* .weeklytemp {
   display: flex;
   justify-content: space-evenly;
   padding-left: 0;
   margin-bottom: 0;
-}
+} */
 .daytemp {
-  list-style-type: none;
   text-align: center;
 }
-.smallpic {
+.secondary-temp {
+  color: rgb(135, 135, 135);
+  font-size: 13px;
+  font-weight: 400;
+}
+/* .smallpic {
   display: block;
   margin: 0 auto;
   max-height: 39px;
-}
+} */
 .edited {
   margin-top: 3px;
 }

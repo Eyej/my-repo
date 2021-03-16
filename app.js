@@ -24,9 +24,13 @@ function formatDate(timestamp) {
   }
 return `${today} ${hour}:${mins}`;
 }
+// forecast call
+function forecast(response) {
+  console.log(response.data);
 
+}
 
-// Challenge 2
+// API call to get desired weather and forecast
 function weatherHandler(event) {
   event.preventDefault();
   //  Start for HomeWork 5
@@ -36,6 +40,10 @@ function weatherHandler(event) {
   axios
     .get(`${endpoint}q=${searchQuery.value}&units=${unit}&appid=${apiKey}`)
     .then(showWeather);
+
+    // forecast call
+    let apiUrl = "https://api.openweathermap.org/data/2.5/forecast?";
+    axios.get(`${apiUrl}q=${searchQuery.value}&units=${unit}&appid=${apiKey}`).then(forecast);
 }
 function titleCase(word){
     return word.toLowerCase().split(' ').map(function(letter) {
