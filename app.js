@@ -40,13 +40,14 @@ function formatHour(timestamp) {
 // 5 day forecast call
 function displayForecast(response) {
   console.log(response.data);
-  // let forecast = null
-  // let forecastElement.innerHTML = null;
+  // Setting initial vars to 'null' so it refreshes before each call
+  let forecast = null;
+  let forecastElement = document.querySelector("#forecastNode");
+  forecastElement.innerHTML = null;
 
   // Using for loop to repeat weather 6x
   for (let i = 2; i < 40; i += 8) {
-    let forecast = response.data.list[i];
-    let forecastElement = document.querySelector("#forecastNode");
+    forecast = response.data.list[i];
     forecastElement.innerHTML += `<div class="col-2 daytemp">
       <small>${formatHour(forecast.dt * 1000)}</small>
       <h6>${formatDate(forecast.dt * 1000).slice(0, 3)}</h6>
