@@ -40,31 +40,53 @@ function formatHour(timestamp) {
 // 5 day forecast call
 function displayForecast(response) {
   console.log(response.data);
+  // let forecast = null
+  // let forecastElement.innerHTML = null;
 
-  // Response variables
-  let forecast = response.data.list;
-  let dayOne = formatDate(forecast[2].dt * 1000);
-  let dayAbbrev1 = dayOne.slice(0, 3);
-  let timeOfDay = formatHour(forecast[2].dt * 1000);
-  let icon1 = forecast[2].weather[0].icon;
-  let tempMax = Math.round(forecast[2].main.temp);
-  let tempMin = Math.round(forecast[2].main.temp_min);
-  console.log(dayOne);
-
-  let forecastElement = document.querySelector("#forecastNode");
-  forecastElement.innerHTML = `<div class="col-2 daytemp">
-      <small>${timeOfDay}</small>
-      <h6>${dayAbbrev1}</h6>
-      <img src="media/cloudySunny.JPG" alt=${forecast[2].weather[0].description} id="fIcon1" class="smallpic" />
+  // Using for loop to repeat weather 6x
+  for (let i = 2; i < 40; i += 8) {
+    let forecast = response.data.list[i];
+    let forecastElement = document.querySelector("#forecastNode");
+    forecastElement.innerHTML += `<div class="col-2 daytemp">
+      <small>${formatHour(forecast.dt * 1000)}</small>
+      <h6>${formatDate(forecast.dt * 1000).slice(0, 3)}</h6>
+      <img src="http://openweathermap.org/img/wn/${
+        forecast.weather[0].icon
+      }.png" 
+      alt=${forecast.weather[0].description} id="fIcon1" class="smallpic" />
       <div class ="secondary-temp">
           <strong id="temp-max">
-            ${tempMax}°
+            ${Math.round(forecast.main.temp)}°
           </strong> &nbsp;
-          <span id="temp-min">${tempMin}°</span> 
+          <span id="temp-min">${Math.round(forecast.main.temp_min)}°</span> 
       </div>
     </div>`;
+  }
 
-  fIcon1.setAttribute("src", `http://openweathermap.org/img/wn/${icon1}.png`);
+  // Response variables- Code for one forecast
+  // let forecast = response.data.list;
+  // let dayOne = formatDate(forecast[2].dt * 1000);
+  // let dayAbbrev1 = dayOne.slice(0, 3);
+  // let timeOfDay = formatHour(forecast[2].dt * 1000);
+  // let icon1 = forecast[2].weather[0].icon;
+  // let tempMax = Math.round(forecast[2].main.temp);
+  // let tempMin = Math.round(forecast[2].main.temp_min);
+  // console.log(dayOne);
+
+  // let forecastElement = document.querySelector("#forecastNode");
+  // forecastElement.innerHTML = `<div class="col-2 daytemp">
+  //     <small>${timeOfDay}</small>
+  //     <h6>${dayAbbrev1}</h6>
+  //     <img src="media/cloudySunny.JPG" alt=${forecast[2].weather[0].description} id="fIcon1" class="smallpic" />
+  //     <div class ="secondary-temp">
+  //         <strong id="temp-max">
+  //           ${tempMax}°
+  //         </strong> &nbsp;
+  //         <span id="temp-min">${tempMin}°</span>
+  //     </div>
+  //   </div>`;
+
+  // fIcon1.setAttribute("src", `http://openweathermap.org/img/wn/${icon1}.png`);
 }
 
 // API call to get desired weather and forecast
