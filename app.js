@@ -1,9 +1,9 @@
 // Date from weather api
 function formatDate(timestamp) {
   let now = new Date(timestamp);
-  let year = now.getFullYear();
-  let mins = now.getMinutes();
-  let hour = now.getHours();
+  // let year = now.getFullYear();
+  // let mins = now.getMinutes();
+  // let hour = now.getHours();
   let dayIndex = now.getDay();
   let days = [
     "Sunday",
@@ -14,14 +14,14 @@ function formatDate(timestamp) {
     "Friday",
     "Saturday",
   ];
-  let today = days[dayIndex];
-  if (hour < 10) {
-    hour = `0${hour}`;
-  }
-  if (mins < 10) {
-    mins = `0${mins}`;
-  }
-  return `${today} ${hour}:${mins}`;
+  let day = days[dayIndex];
+  // if (hour < 10) {
+  //   hour = `0${hour}`;
+  // }
+  // if (mins < 10) {
+  //   mins = `0${mins}`;
+  // }
+  return day + formatHour(timestamp);
 }
 // same as above, but specifically for hours
 function formatHour(timestamp) {
