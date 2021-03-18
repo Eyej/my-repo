@@ -17,8 +17,8 @@
     <div class="intro">
          <h1 class="heading">Weather App</h1>
         <p class="brief">A simple weather app that lets you check the weather for any city in the world. To the left are three set buttons, 
-            showcasing the weather for London, Sydney and Moscow with just a tap. The rest of the page holds the search engine which displays
-            the temperature, humidity and wind measurements including a 7-day weather forecast per search request. Enjoy! 🤠</p>
+            to display the weather for London, Sydney and Moscow with just a tap. The rest of the page holds the search engine which indicates
+            the temperature, humidity and wind measurements including a 5-day morning forecast per city. Enjoy! 🤠</p>
     </div>
     <div class="container">
  
@@ -57,13 +57,13 @@
                 <div class="display">
                     <h2 id="city">London</h2>
                     <ul class="day-desc">
-                        <li id="currentDate">Last updated: Thursday, 14:00</li>
+                        <li id="currentDate">Thursday, 14:00</li>
                         <li id="weatherComments">Partly Cloudy</li>
                     </ul>
                     <div class="row g-3 temp">
                         <div class="col-6">
                             <div class="clearfix tempmain">
-                                <img src="#" alt="Partly Cloudy" class=float-left id="weather-icon"/>
+                                <img src="#" alt="weather icon" class=float-left id="weather-icon"/>
                                 <div class="float-left">
                                     <strong class="num" id="tempNum">6</strong
                                         ><span class="units">
@@ -86,15 +86,7 @@
                     <hr style="color: rgb(255, 204, 0);" />
                     <!-- Weather forecast display, activated on search & injected via JS -->
                     <div class="row g-3 weeklytemp" id="forecastNode">
-                        <!-- <div class="col-2 daytemp">
-                            <h6 class="">Thu</h6>
-                            <img src="media/cloudySunny.JPG" alt="Partly Cloudy" class="smallpic" />
-                            <div class ="secondary-temp">
-                                <strong id="temp-max">
-                                6° 
-                                </strong> <span id="temp-min">4°</span> 
-                            </div>
-                        </div> -->
+                        
                     </div>
                 </div>
             </section> 
