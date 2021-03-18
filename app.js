@@ -85,7 +85,6 @@ function titleCase(word) {
 
 //  Display weather per search query
 function showWeather(response) {
-  // console.log(response.data);
   let cityName = response.data.name;
   let countryAbbrev = response.data.sys.country;
   celsiusTemp = Math.round(response.data.main.temp);
@@ -156,6 +155,12 @@ function displayCityWeather(event) {
   axios
     .get(`${apiUrl}q=${choice}&units=${unit}&appid=${apiKey}`)
     .then(showWeather);
+
+  // forecast call
+  apiUrl = "https://api.openweathermap.org/data/2.5/forecast?";
+  axios
+    .get(`${apiUrl}q=${choice}&units=${unit}&appid=${apiKey}`)
+    .then(displayForecast);
 }
 
 let london = document.querySelector("#btn1");
