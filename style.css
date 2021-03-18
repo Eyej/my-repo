@@ -17,12 +17,6 @@ h2 {
 .intro {
   text-align: center;
   padding: 30px;
-  /* background: radial-gradient(
-    circle at 10% 20%,
-    rgb(253, 239, 132) 0%,
-    rgb(247, 198, 169) 54.2%,
-    rgb(21, 186, 196) 100.3%
-  ); */
   height: 30%;
 }
 .brief {
@@ -65,12 +59,13 @@ ul.day-desc {
   cursor: default;
 }
 .num {
-  font-size: 2em;
-  margin-left: 20px;
+  position: relative;
+  top: 15px;
+  font-size: 2.5em;
 }
 .units {
   position: relative;
-  top: -15px;
+  top: -5px;
 }
 .units a {
   text-decoration: none;
@@ -86,12 +81,6 @@ ul.tempdetail {
   padding-right: 0;
 }
 
-/* .weeklytemp {
-  display: flex;
-  justify-content: space-evenly;
-  padding-left: 0;
-  margin-bottom: 0;
-} */
 .daytemp {
   text-align: center;
 }
@@ -100,11 +89,6 @@ ul.tempdetail {
   font-size: 13px;
   font-weight: 400;
 }
-/* .smallpic {
-  display: block;
-  margin: 0 auto;
-  max-height: 39px;
-} */
 .edited {
   margin-top: 3px;
 }
