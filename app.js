@@ -1,9 +1,6 @@
 // Date from weather api
 function formatDate(timestamp) {
   let now = new Date(timestamp);
-  // let year = now.getFullYear();
-  // let mins = now.getMinutes();
-  // let hour = now.getHours();
   let dayIndex = now.getDay();
   let days = [
     "Sunday",
@@ -15,13 +12,7 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[dayIndex];
-  // if (hour < 10) {
-  //   hour = `0${hour}`;
-  // }
-  // if (mins < 10) {
-  //   mins = `0${mins}`;
-  // }
-  return day + formatHour(timestamp);
+  return day + " " + formatHour(timestamp);
 }
 // same as above, but specifically for hours
 function formatHour(timestamp) {
@@ -45,7 +36,7 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecastNode");
   forecastElement.innerHTML = null;
 
-  // Using for loop to repeat weather 6x
+  // Using for loop to display 5-day weather forecast
   for (let i = 2; i < 40; i += 8) {
     forecast = response.data.list[i];
     forecastElement.innerHTML += `<div class="col-2 daytemp">
@@ -63,31 +54,6 @@ function displayForecast(response) {
       </div>
     </div>`;
   }
-
-  // Response variables- Code for one forecast
-  // let forecast = response.data.list;
-  // let dayOne = formatDate(forecast[2].dt * 1000);
-  // let dayAbbrev1 = dayOne.slice(0, 3);
-  // let timeOfDay = formatHour(forecast[2].dt * 1000);
-  // let icon1 = forecast[2].weather[0].icon;
-  // let tempMax = Math.round(forecast[2].main.temp);
-  // let tempMin = Math.round(forecast[2].main.temp_min);
-  // console.log(dayOne);
-
-  // let forecastElement = document.querySelector("#forecastNode");
-  // forecastElement.innerHTML = `<div class="col-2 daytemp">
-  //     <small>${timeOfDay}</small>
-  //     <h6>${dayAbbrev1}</h6>
-  //     <img src="media/cloudySunny.JPG" alt=${forecast[2].weather[0].description} id="fIcon1" class="smallpic" />
-  //     <div class ="secondary-temp">
-  //         <strong id="temp-max">
-  //           ${tempMax}°
-  //         </strong> &nbsp;
-  //         <span id="temp-min">${tempMin}°</span>
-  //     </div>
-  //   </div>`;
-
-  // fIcon1.setAttribute("src", `http://openweathermap.org/img/wn/${icon1}.png`);
 }
 
 // API call to get desired weather and forecast
@@ -117,7 +83,7 @@ function titleCase(word) {
     .join(" ");
 }
 
-//   Display weather per search query
+//  Display weather per search query
 function showWeather(response) {
   // console.log(response.data);
   let cityName = response.data.name;
@@ -137,7 +103,7 @@ function showWeather(response) {
   wind.innerHTML = `Wind: ${windSpeed}mph`;
   feeling.innerHTML = `Feels like: ${tempFeeling}°`;
   let heading = document.querySelector("#currentDate");
-  heading.innerHTML = formatDate(response.data.dt * 1000);
+  heading.innerHTML = `Last updated: ${formatDate(response.data.dt * 1000)}`;
   weatherIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${icon}@2x.png`
