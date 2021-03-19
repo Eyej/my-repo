@@ -45,7 +45,7 @@ function displayForecast(response) {
       <img src="http://openweathermap.org/img/wn/${
         forecast.weather[0].icon
       }.png" 
-      alt=${forecast.weather[0].description} id="fIcon1" class="smallpic" />
+      alt=${forecast.weather[0].description} />
       <div class ="secondary-temp">
           <strong id="temp-max">
             ${Math.round(forecast.main.temp)}°
@@ -73,6 +73,7 @@ function weatherHandler(event) {
     .get(`${apiUrl}q=${searchQuery.value}&units=${unit}&appid=${apiKey}`)
     .then(displayForecast);
 }
+// Capitilize first word of any string
 function titleCase(word) {
   return word
     .toLowerCase()
@@ -144,17 +145,17 @@ function showPosition(position) {
     .then(displayForecast);
 }
 
-let button = document.querySelector("#currentLoc");
-button.addEventListener("click", displayCurrentWeather);
+let mapButton = document.querySelector("#currentLoc");
+mapButton.addEventListener("click", displayCurrentWeather);
 
 // Writing calls for when location buttons are called(London, Sydney, Moscow)
 function displayCityWeather(event) {
   event.preventDefault();
-  console.log(event);
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
   let apiKey = "386b70f96b3e09e40aefe57eb2e44f5e";
   let unit = "metric";
 
+  // Just like getting a form value, this gets each city's innertext
   let choice = event.target.innerText;
   //   Passing all variables into axios
   axios

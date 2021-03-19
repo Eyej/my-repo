@@ -6,8 +6,8 @@ body {
   background-repeat: no-repeat;
 }
 h2,
-h5,
-h6 {
+h6,
+li {
   color: #878787;
 }
 
@@ -89,9 +89,7 @@ ul.tempdetail {
   font-size: 13px;
   font-weight: 400;
 }
-.edited {
-  margin-top: 3px;
-}
+
 footer {
   padding-top: 5px;
   font-family: monospace;
