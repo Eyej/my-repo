@@ -137,6 +137,11 @@ function showPosition(position) {
   axios
     .get(`${apiURL}lat=${lat}&lon=${long}&units=${unit}&appid=${apiKey}`)
     .then(showWeather);
+  // forecast call
+  apiURL = "https://api.openweathermap.org/data/2.5/forecast?";
+  axios
+    .get(`${apiURL}lat=${lat}&lon=${long}&units=${unit}&appid=${apiKey}`)
+    .then(displayForecast);
 }
 
 let button = document.querySelector("#currentLoc");
