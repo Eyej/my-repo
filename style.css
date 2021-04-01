@@ -14,22 +14,24 @@ li {
 h2 {
   font-weight: 600;
 }
+/* Header style */
 .intro {
   text-align: center;
   padding: 30px;
   height: 30%;
 }
-.brief {
-  text-align: left;
-  color: cornsilk;
-}
-.container {
-  padding: 0 50px 25px 50px;
-}
 .heading {
   text-align: center;
   font-weight: bolder;
   color: cornsilk;
+}
+.brief {
+  text-align: left;
+  color: cornsilk;
+}
+
+.container {
+  padding: 0 50px 25px 50px;
 }
 .appBody {
   display: flex;
@@ -47,7 +49,9 @@ h2 {
 .two {
   width: 80%;
 }
-ul.day-desc {
+
+/*Style for display screen*/
+ul.format {
   list-style-type: none;
   padding: 0;
 }
@@ -70,10 +74,6 @@ ul.day-desc {
 .units a {
   text-decoration: none;
 }
-ul.tempdetail {
-  list-style-type: none;
-  padding: 0;
-}
 .display {
   padding: 20px 10px 5px 10px;
 }
@@ -81,6 +81,7 @@ ul.tempdetail {
   padding-right: 0;
 }
 
+/* Both used in JS injection */
 .daytemp {
   text-align: center;
 }
